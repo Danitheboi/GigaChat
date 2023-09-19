@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<GridPane fx:controller="Client.ChatController"
+          xmlns:fx="http://javafx.com/fxml"
+          alignment="center" hgap="10" vgap="10">
+    <TextArea fx:id="chatArea" GridPane.rowIndex="0" GridPane.columnIndex="0" editable="false"/>
+    <TextField fx:id="inputField" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <Button text="Send" onAction="#sendMessage" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+</GridPane>
