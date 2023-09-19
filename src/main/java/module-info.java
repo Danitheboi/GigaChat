@@ -6,4 +6,6 @@ module com.chatapp.gigachat {
     opens Client to javafx.fxml, javafx.graphics; // Åbn for begge moduler med et komma
 
     exports Client;
+    exports Controller;
+    opens Controller to javafx.fxml, javafx.graphics;
 }

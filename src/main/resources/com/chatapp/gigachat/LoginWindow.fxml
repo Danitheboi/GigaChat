@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="133.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginWindowController">
+   <children>
+      <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="C:\Users\Daniel\Documents\GigaChat\src\main\resources\img\Giga.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="106.0" layoutY="47.0" prefHeight="31.0" prefWidth="150.0" text="Indtast venligst dit navn:">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtName" layoutX="256.0" layoutY="50.0" />
+      <Button layoutX="353.0" layoutY="87.0" mnemonicParsing="false" onAction="#LoginBotton" prefHeight="25.0" prefWidth="53.0" text="Login" />
+   </children>
+</AnchorPane>
