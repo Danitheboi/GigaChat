@@ -26,7 +26,6 @@ public class LoginWindowController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/chatapp/gigachat/ClientWindow.fxml"));
             Parent root = loader.load();
             ClientWindowController clientController = loader.getController();
-            clientController.initialize("");
 
             // Brug den nye metode til at indstille brugernavnet
             clientController.setClientNameExternally(enteredName);

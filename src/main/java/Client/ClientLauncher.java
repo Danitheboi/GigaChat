@@ -19,7 +19,6 @@ public class ClientLauncher extends Application {
         ClientWindowController controller = new ClientWindowController();
         primaryStage.setTitle("Gigachat");
         primaryStage.setScene(new Scene(root,450,550));
-        controller.initialize("");
 
 
         Stage stage = new Stage();

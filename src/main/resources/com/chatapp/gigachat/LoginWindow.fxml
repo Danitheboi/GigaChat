@@ -8,9 +8,7 @@
 <AnchorPane prefHeight="133.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginWindowController">
    <children>
       <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="C:\Users\Daniel\Documents\GigaChat\src\main\resources\img\Giga.jpg" />
-         </image>
+         <Image url="C:\Users\^_^\Desktop\GigaChat\src\main\resources\img\Giga.jpg"/>
       </ImageView>
       <Label layoutX="106.0" layoutY="47.0" prefHeight="31.0" prefWidth="150.0" text="Indtast venligst dit navn:">
          <font>

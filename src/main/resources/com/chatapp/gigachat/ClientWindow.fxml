@@ -12,19 +12,16 @@
           <TextField fx:id="inputField" GridPane.rowIndex="2" />
           <Button onAction="#sendMessage" text="Send" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          <ImageView fitHeight="62.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="C:\Users\Daniel\Documents\GigaChat\src\main\resources\img\Giga.jpg" />
-            </image>
+            <Image url="C:\Users\^_^\Desktop\GigaChat\src\main\resources\img\Giga.jpg"/>
          </ImageView>
          <Label alignment="CENTER" prefHeight="30.0" prefWidth="368.0" text="         Velkommen Til GigaChat">
             <font>
                <Font name="Arial Bold" size="20.0" />
             </font>
          </Label>
-         <ImageView fitHeight="62.0" fitWidth="76.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-            <image>
-               <Image url="C:\Users\Daniel\Documents\GigaChat\src\main\resources\img\Giga.jpg" />
-            </image>
+         <ImageView fitHeight="62.0" fitWidth="76.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true"
+                    preserveRatio="true" GridPane.columnIndex="1">
+            <Image url="C:\Users\^_^\Desktop\GigaChat\src\main\resources\img\Giga.jpg"/>
          </ImageView>
          <columnConstraints>
             <ColumnConstraints />
