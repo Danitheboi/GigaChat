@@ -17,22 +17,30 @@ public class LoginWindowController {
     public void initialize(){
 
     }
+    @FXML
+    private void LoginBotton(ActionEvent event) {
+        String enteredName = txtName.getText();
+        System.out.println("Entered name: " + enteredName);
 
-    public void LoginBotton(ActionEvent actionEvent) throws IOException {
-        if(!txtName.getText().isEmpty()&&txtName.getText().matches("[A-Åa-å0-9]")){
-            Stage primaryStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/com/chatapp/gigachat/ClientWindow.fxml"));
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/chatapp/gigachat/ClientWindow.fxml"));
+            Parent root = loader.load();
+            ClientWindowController clientController = loader.getController();
+            clientController.initialize("");
 
-            ClientWindowController controller = new ClientWindowController();
-            controller.setClientName(txtName.getText());
+            // Brug den nye metode til at indstille brugernavnet
+            clientController.setClientNameExternally(enteredName);
 
-            primaryStage.setScene(new Scene(root,450,550));
-            primaryStage.setTitle(txtName.getText());
+            // Opret et nyt vindue for din chatklient
+            Stage chatStage = new Stage();
+            chatStage.setTitle("Chat Client - " + enteredName);
+            chatStage.setScene(new Scene(root, 450, 550));
+            chatStage.show();
 
-            primaryStage.show();
-
-            txtName.clear();
+            // Luk loginvinduet
+            ((Stage) txtName.getScene().getWindow()).close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
     }
 }

@@ -1,4 +1,7 @@
-package Server;
+package Client;
+
+import Controller.ClientWindowController;
+import Server.ChatServer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -6,6 +9,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ClientHandler implements Runnable {
+    private PrintWriter out;
     private Socket clientSocket;
     public PrintWriter output;  // Gjort offentlig for simplicitetens skyld, men du kan også bruge en getter.
     private Scanner input;
@@ -13,6 +17,7 @@ public class ClientHandler implements Runnable {
     public ClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
         ChatServer.clients.add(this);  // Tilføj denne klienthandler til listen over klienter
+        System.out.println("ClientHandler created for client: " + clientSocket.getInetAddress());
     }
 
     @Override
@@ -27,7 +32,9 @@ public class ClientHandler implements Runnable {
 
                 // Send beskeden til alle tilsluttede klienter
                 for (ClientHandler client : ChatServer.clients) {
-                    client.output.println(message);
+                    if(client != this) {
+                        client.output.println(message);
+                    }
                 }
             }
 
@@ -37,4 +44,5 @@ public class ClientHandler implements Runnable {
             e.printStackTrace();
         }
     }
+
 }

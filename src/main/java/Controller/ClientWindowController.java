@@ -21,7 +21,8 @@ public class ClientWindowController {
 
     private PrintWriter output;
 
-    private String clientName = "Client";
+
+    private String clientName = "";
 
     public String getClientName() {
         return clientName;
@@ -31,9 +32,12 @@ public class ClientWindowController {
         this.clientName = clientName;
     }
 
+    public void setClientNameExternally(String clientName) {
+        this.clientName = clientName;
+        System.out.println("Client name set externally in ClientWindowController: " + clientName);
+    }
 
-
-    public void initialize() {
+    public void initialize(String clientName) {
 
         try {
             Socket socket = new Socket("localhost", ChatServer.PORT);
@@ -44,7 +48,10 @@ public class ClientWindowController {
                     Scanner input = new Scanner(socket.getInputStream());
                     while (input.hasNextLine()) {
                         String message = input.nextLine();
-                        Platform.runLater(() -> chatArea.appendText(clientName + ": " + message + "\n"));
+                        System.out.println("Received from server: " + message);
+                        if (chatArea != null) {
+                            Platform.runLater(() -> chatArea.appendText(message + "\n"));
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -54,15 +61,31 @@ public class ClientWindowController {
             e.printStackTrace();
         }
     }
-
     @FXML
+    public void sendMessage() {
+        String message = inputField.getText();
+        String formattedMessage = clientName + ": " + message;
+        chatArea.appendText(formattedMessage + "\n");
+        inputField.clear();
+
+        // Kontroller, om output er initialiseret, før du sender beskeden
+        if (output != null) {
+            output.println(formattedMessage);
+        } else {
+            System.err.println("Output is not initialized!");
+        }
+    }
+    /*@FXML
     private void sendMessage() {
         String message = inputField.getText();
-        output.println(message);
+        output.println(clientName + ": " + message);
         inputField.clear();
     }
+
+     */
 
     public void shutdown() {
 
     }
+
 }
