@@ -1,6 +1,7 @@
 package Server;
 
 import Client.ClientHandler;
+import entitet.User;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -21,8 +22,9 @@ public class ChatServer {
         while (true) {
             Socket clientSocket = serverSocket.accept();
             System.out.println("Client connected...");
+
             ClientHandler handler = new ClientHandler(clientSocket);
-            clients.add(handler);
+
             new Thread(handler).start();
         }
     }
