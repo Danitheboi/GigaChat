@@ -10,12 +10,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginWindowController {
+public class
+LoginWindowController {
     @FXML
     public TextField txtName;
 
-    public void initialize(){
-
+    public void initialize() {
+        // (Andre initialiseringer, hvis nødvendigt)
     }
     @FXML
     private void LoginBotton(ActionEvent event) {
@@ -27,16 +28,14 @@ public class LoginWindowController {
             Parent root = loader.load();
             ClientWindowController clientController = loader.getController();
 
-            // Brug den nye metode til at indstille brugernavnet
             clientController.setClientNameExternally(enteredName);
+            clientController.connectToServer();  // Forbind til serveren efter login
 
-            // Opret et nyt vindue for din chatklient
-            Stage chatStage = new Stage();
-            chatStage.setTitle("Chat Client - " + enteredName);
-            chatStage.setScene(new Scene(root, 450, 550));
-            chatStage.show();
+            Stage stage = new Stage();
+            stage.setTitle("Chat Window");
+            stage.setScene(new Scene(root));
+            stage.show();
 
-            // Luk loginvinduet
             ((Stage) txtName.getScene().getWindow()).close();
         } catch (IOException e) {
             e.printStackTrace();

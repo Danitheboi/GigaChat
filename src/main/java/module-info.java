@@ -8,4 +8,6 @@ module com.chatapp.gigachat {
     exports Client;
     exports Controller;
     opens Controller to javafx.fxml, javafx.graphics;
+    exports Server;
+    opens Server to javafx.fxml, javafx.graphics;
 }

@@ -20,14 +20,16 @@ public class ClientLauncher extends Application {
         primaryStage.setTitle("Gigachat");
         primaryStage.setScene(new Scene(root,450,550));
 
+        Parent loginRoot = FXMLLoader.load(getClass().getResource("/com/chatapp/gigachat/LoginWindow.fxml"));
+        Stage loginStage = new Stage();
 
-        Stage stage = new Stage();
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.setTitle("Login Window");
-        stage.initOwner(primaryStage.getScene().getWindow());
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/com/chatapp/gigachat/LoginWindow.fxml"))));
-        stage.centerOnScreen();
-        stage.show();
+        loginStage.initModality(Modality.WINDOW_MODAL);
+        loginStage.setTitle("Login Window");
+        loginStage.initOwner(primaryStage.getScene().getWindow());
+        loginStage.setScene(new Scene(loginRoot));
+        loginStage.centerOnScreen();
+
+        loginStage.show();
 
     }
 }
