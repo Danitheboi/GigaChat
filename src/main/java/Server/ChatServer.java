@@ -2,14 +2,18 @@ package Server;
 
 import Client.ClientHandler;
 
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ChatServer {
     public static final int PORT = 12345;
     public static final CopyOnWriteArrayList<ClientHandler> clients = new CopyOnWriteArrayList<>();
+
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(PORT);
@@ -18,8 +22,9 @@ public class ChatServer {
         while (true) {
             Socket clientSocket = serverSocket.accept();
             System.out.println("Client connected...");
+
             ClientHandler handler = new ClientHandler(clientSocket);
-            clients.add(handler);
+
             new Thread(handler).start();
         }
     }
