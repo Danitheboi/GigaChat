@@ -11,12 +11,12 @@ import java.util.Scanner;
 public class ClientHandler implements Runnable {
     private PrintWriter out;
     private Socket clientSocket;
-    public PrintWriter output;  // Gjort offentlig for simplicitetens skyld, men du kan også bruge en getter.
+    public PrintWriter output;
     private Scanner input;
 
     public ClientHandler(Socket clientSocket) {
         this.clientSocket = clientSocket;
-        ChatServer.clients.add(this);  // Tilføj denne klienthandler til listen over klienter
+        ChatServer.clients.add(this);
         System.out.println("ClientHandler created for client: " + clientSocket.getInetAddress());
     }
 
@@ -30,7 +30,7 @@ public class ClientHandler implements Runnable {
                 String message = input.nextLine();
                 System.out.println("Received: " + message);
 
-                // Send beskeden til alle tilsluttede klienter
+
                 for (ClientHandler client : ChatServer.clients) {
                     if(client != this) {
                         client.output.println(message);
@@ -39,7 +39,7 @@ public class ClientHandler implements Runnable {
             }
 
             clientSocket.close();
-            ChatServer.clients.remove(this);  // Fjern denne klienthandler fra listen, når den er færdig
+            ChatServer.clients.remove(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

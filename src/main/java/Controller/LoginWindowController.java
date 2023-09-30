@@ -16,7 +16,7 @@ LoginWindowController {
     public TextField txtName;
 
     public void initialize() {
-        // (Andre initialiseringer, hvis nødvendigt)
+
     }
     @FXML
     private void LoginBotton(ActionEvent event) {
@@ -29,7 +29,7 @@ LoginWindowController {
             ClientWindowController clientController = loader.getController();
 
             clientController.setClientNameExternally(enteredName);
-            clientController.connectToServer();  // Forbind til serveren efter login
+            clientController.connectToServer();
 
             Stage stage = new Stage();
             stage.setTitle("Chat Window");

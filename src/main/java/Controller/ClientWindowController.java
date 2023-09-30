@@ -78,6 +78,6 @@ public class ClientWindowController {
     }
 
     public void shutdown() {
-        // (Andre ting du muligvis vil gøre ved lukning)
+
     }
 }
