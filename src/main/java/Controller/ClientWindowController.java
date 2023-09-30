@@ -7,9 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class ClientWindowController {
@@ -20,8 +18,6 @@ public class ClientWindowController {
     private TextField inputField;
 
     private PrintWriter output;
-
-
     private String clientName = "";
 
     public String getClientName() {
@@ -37,8 +33,7 @@ public class ClientWindowController {
         System.out.println("Client name set externally in ClientWindowController: " + clientName);
     }
 
-    public void initialize() {
-
+    public void connectToServer() {
         try {
             Socket socket = new Socket("localhost", ChatServer.PORT);
             output = new PrintWriter(socket.getOutputStream(), true);
@@ -53,17 +48,21 @@ public class ClientWindowController {
                         if (chatArea != null) {
                             Platform.runLater(() -> chatArea.appendText(message + "\n"));
                         }
-
-
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
+                    Platform.runLater(() -> chatArea.appendText("Fejl ved modtagelse af beskeder fra serveren.\n"));
                 }
             }).start();
         } catch (IOException e) {
             e.printStackTrace();
+            if (chatArea != null) {
+                Platform.runLater(() -> chatArea.appendText("Kunne ikke forbinde til serveren.\n"));
+            }
         }
     }
+
+
     @FXML
     public void sendMessage() {
         String message = inputField.getText();
@@ -76,12 +75,9 @@ public class ClientWindowController {
         } else {
             System.err.println("Output is not initialized!");
         }
-
-
     }
 
     public void shutdown() {
 
     }
-
 }
